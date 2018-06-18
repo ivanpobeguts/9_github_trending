@@ -24,12 +24,12 @@ def get_search_period(delta=7):
 
 
 def print_repo_info(url, stars_amount, issues):
-        print(
-            'url: ', url,
-            ', stars: ', stars_amount,
-            ', issues: ', issues,
-            sep=''
-        )
+    print(
+        'url: ', url,
+        ', stars: ', stars_amount,
+        ', issues: ', issues,
+        sep=''
+    )
 
 
 if __name__ == '__main__':
