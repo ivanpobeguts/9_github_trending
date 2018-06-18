@@ -9,14 +9,14 @@ def get_trending_repositories(search_period, top_size=20):
         'sort': 'stars',
         'order': 'desc',
     }
-    r = requests.get(base_url, params=params)
-    return r.json()['items'][:top_size]
+    response = requests.get(base_url, params=params)
+    return response.json()['items'][:top_size]
 
 
 def get_open_issues_amount(repo_full_name):
     base_url = 'https://api.github.com/repos/{}/issues'.format(repo_full_name)
-    r = requests.get(base_url)
-    return len(r.json())
+    response = requests.get(base_url)
+    return len(response.json())
 
 
 def get_search_period(delta=7):
