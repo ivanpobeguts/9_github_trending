@@ -23,12 +23,7 @@ def get_search_period(delta=7):
     return date.today() - timedelta(delta)
 
 
-def print_search_results(repos):
-    for repo in repos:
-        full_name = repo['full_name']
-        url = repo['html_url']
-        stars_amount = repo['stargazers_count']
-        issues = get_open_issues_amount(full_name)
+def print_repo_info(url, stars_amount, issues):
         print(
             'url: ', url,
             ', stars: ', stars_amount,
@@ -41,6 +36,11 @@ if __name__ == '__main__':
     search_period = get_search_period()
     try:
         top_repos = get_trending_repositories(search_period)
-        print_search_results(top_repos)
+        for repo in top_repos:
+            full_name = repo['full_name']
+            url = repo['html_url']
+            stars_amount = repo['stargazers_count']
+            issues = get_open_issues_amount(full_name)
+            print_repo_info(url, stars_amount, issues)
     except KeyError:
         print('Query limit exceeded. Try in a minute')
